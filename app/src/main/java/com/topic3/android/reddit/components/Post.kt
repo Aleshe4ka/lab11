@@ -31,8 +31,8 @@ import com.topic3.android.reddit.domain.model.PostModel.Companion.DEFAULT_POST
 fun TextPost(
     post: PostModel,
     onJoinButtonClick: (Boolean) -> Unit= {}
-){
-    Post(post, onJoinButtonClick) { TextContent(post.text)}
+) {
+    Post(post, onJoinButtonClick) { TextContent(post.text) }
 }
 
 @Composable
