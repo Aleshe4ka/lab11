@@ -1,5 +1,6 @@
 package com.topic3.android.reddit.components
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -17,9 +18,14 @@ import androidx.compose.ui.unit.dp
 import com.topic3.android.reddit.R
 
 @Composable
-fun JoinedToast(visible: Boolean){
-
-    ToastContent()
+fun JoinedToast(visible: Boolean) {
+    AnimatedVisibility(
+        visible = visible,
+        enter = slideInVertically(initialOffsetY = { +40 }) + fadeIn(),
+        exit = slideOutVertically() + fadeOut()
+    ) {
+        ToastContent()
+    }
 }
 
 @Composable
