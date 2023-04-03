@@ -1,5 +1,6 @@
 package com.topic3.android.reddit.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -11,10 +12,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.setValue
 
 @Composable
 fun JoinButton(onClick: (Boolean) -> Unit = {}) {
@@ -31,10 +28,12 @@ fun JoinButton(onClick: (Boolean) -> Unit = {}) {
 
     val shape = RoundedCornerShape(corner = CornerSize(12.dp))
 
-    val buttonBackgroundColor: Color =
+    val buttonBackgroundColor: Color by animateColorAsState(
         if (buttonState == JoinButtonState.PRESSED)
-            Color.White else
+            Color.White
+        else
             Color.Blue
+    )
 
     val iconAsset: ImageVector =
         if (buttonState == JoinButtonState.PRESSED)
